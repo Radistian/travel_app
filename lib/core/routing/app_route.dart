@@ -1,17 +1,21 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:go_router/go_router.dart';
+import 'package:travel_app/core/models/model.dart';
+import 'package:travel_app/presentation/pages/detail.dart';
 import 'package:travel_app/presentation/pages/forget.dart';
 import 'package:travel_app/presentation/pages/forget2.dart';
 import 'package:travel_app/presentation/pages/forget3.dart';
 import 'package:travel_app/presentation/pages/forget4.dart';
 import 'package:travel_app/presentation/pages/forget5.dart';
+import 'package:travel_app/presentation/pages/home.dart';
+import 'package:travel_app/presentation/pages/kuta.dart';
 import 'package:travel_app/presentation/pages/otpScreen.dart';
 import 'package:travel_app/presentation/pages/forget7.dart';
-import 'package:travel_app/presentation/pages/home.dart';
 import 'package:travel_app/presentation/pages/intro.dart';
 import 'package:travel_app/presentation/pages/login.dart';
 import 'package:travel_app/presentation/pages/regis.dart';
+import 'package:travel_app/presentation/pages/search.dart';
 import 'package:travel_app/presentation/pages/splash_screen.dart';
 
 part 'route_name.dart';
@@ -72,11 +76,39 @@ final appRoute = GoRouter(routes: [
       name: Routes.otp_verification,
       builder: (context, state) {
         final email = state.extra as String;
-        return OTPVerificationScreen(email: email,);
+        return OTPVerificationScreen(
+          email: email,
+        );
       }),
   GoRoute(
     path: '/forget7',
     name: Routes.forget7,
     builder: (context, state) => SuccessScreen(),
-  )
+  ),
+  GoRoute(
+      path: '/kuta',
+      name: Routes.kuta,
+      builder: (context, state) => KutaBeachScreen()),
+  // GoRoute(
+  //     path: '/detail',
+  //     name: Routes.detail,
+  //     builder: (context, state) => PlaceDetailPage()),
+  GoRoute(
+      path: '/search',
+      name: Routes.search,
+      builder: (context, state){
+      final extra = state.extra as Map<String, dynamic>? ?? {};
+      final String searchQuery = extra['searchQuery'] as String? ?? "";
+      final int categoryID = extra['categoryID'] as int? ?? 0;
+      return SearchScreen(categoryID: categoryID, searchQuery: searchQuery);
+      }
+  )   
+  // GoRoute(
+  //   path: '/detail',
+  //   name: Routes.detail,
+  //   builder: (context, state) {
+  //     final _data = state.extra as DetailWisata;
+  //     return PlaceDetailPage(data: _data);
+  //   },
+  // ),
 ]);

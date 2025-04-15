@@ -37,6 +37,7 @@ dependencies:
   http: ^1.3.0
   introduction_screen: ^3.1.14
   pinput: ^5.0.1
+  shared_preferences: ^2.5.2
 
 dev_dependencies:
   flutter_lints: ^4.0.0

@@ -12,4 +12,7 @@ class Routes{
   static const String forget5 = "/forget5";
   static const String otp_verification = "/otp_verification";
   static const String forget7 ="/forget7";
+  static const String kuta ="/kuta";
+  static const String detail ="/detail";
+  static const String search ="/search";
 }
